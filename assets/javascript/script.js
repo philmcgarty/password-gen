@@ -1,6 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
+
 //THIS IS THE FUNCTION TO CHANGE
 var generatePassword = function() {
   var lCase = "abcdefghijklmnopqrstuvwxyz";
@@ -12,19 +14,21 @@ var generatePassword = function() {
   //Confirm password length
   var passLength = window.prompt("How many characters in password? (8-128 only)");
   console.log(passLength);
-  
-  //Confirm lowercase
-  var lCaseConfirm = window.confirm("Should the password contain lowercase letters? e.g. a-z");
-  if (lCaseConfirm) {
-    selectedChars += lCase;
-    console.log(selectedChars); 
-  }
-  //Confirm
-  var uCaseConfirm = window.confirm("Should the password contain uppercase letters? e.g A-Z");
-  if (uCaseConfirm) {
-    selectedChars += uCase;
+
+  //character confirmation function
+  var charConfirmation = function(charType, charTypeVar) {
+  var confirm = window.confirm("Should the password contain " + charType + " characters?");
+  if (confirm) {
+    selectedChars += charTypeVar;
     console.log(selectedChars);
+    }
   }
+
+  // Function calls for cases, numbers etc...
+  charConfirmation("lowercase", lCase);
+  charConfirmation("uppercase", uCase);
+  charConfirmation("numerical", nums);
+  charConfirmation("special", specials);
 
 }
 //DON'T CHANGE ANYTHING BELOW THIS!
