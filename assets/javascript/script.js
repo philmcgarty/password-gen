@@ -10,10 +10,20 @@ var generatePassword = function() {
   var nums = "0123456789";
   var specials = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~]"+'"';
   var selectedChars = "";
+  var passLength = "";
 
   //Confirm password length
-  var passLength = window.prompt("How many characters in password? (8-128 only)");
-  console.log(passLength);
+  var passCheck = function() {
+    var passLength = window.prompt("How many characters in password? (8-128 only)");
+    passLength = parseInt(Math.round(passLength));
+    console.log(passLength);
+    if (isNaN(passLength) || passLength < 8 || passLength > 128){
+      window.alert("That is not a valid number, please try again.");
+      passCheck();
+    }; 
+  };
+
+  passCheck();
 
   //character confirmation function
   var charConfirmation = function(charType, charTypeVar) {
@@ -21,16 +31,22 @@ var generatePassword = function() {
   if (confirm) {
     selectedChars += charTypeVar;
     console.log(selectedChars);
-    }
+    };
+  };
+
+  // While loop to validate at least one character type has been selected
+  while (selectedChars === "") {
+    // Function calls for cases, numbers etc...
+    charConfirmation("lowercase", lCase);
+    charConfirmation("uppercase", uCase);
+    charConfirmation("numerical", nums);
+    charConfirmation("special", specials);
+    if (selectedChars === "") {
+      window.alert("You must choose at least one character type!");
+    };
   }
 
-  // Function calls for cases, numbers etc...
-  charConfirmation("lowercase", lCase);
-  charConfirmation("uppercase", uCase);
-  charConfirmation("numerical", nums);
-  charConfirmation("special", specials);
-
-}
+};
 //DON'T CHANGE ANYTHING BELOW THIS!
 
 
