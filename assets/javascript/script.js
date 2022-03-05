@@ -11,10 +11,11 @@ var generatePassword = function() {
   var specials = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~]"+'"';
   var selectedChars = "";
   var passLength = "";
+  var generatedPass = "";
 
   //Confirm password length
   var passCheck = function() {
-    var passLength = window.prompt("How many characters in password? (8-128 only)");
+    passLength = window.prompt("How many characters in password? (8-128 only)");
     passLength = parseInt(Math.round(passLength));
     console.log(passLength);
     if (isNaN(passLength) || passLength < 8 || passLength > 128){
@@ -46,6 +47,16 @@ var generatePassword = function() {
     };
   }
 
+  for (let i=0; i < passLength; i++) {
+    //console.log("this is a test" + i);
+    random = Math.floor(Math.random()*selectedChars.length);
+    //console.log(random);
+    generatedPass += (selectedChars.charAt(random));
+    console.log(generatedPass);
+  };
+
+  return generatedPass;
+
 };
 //DON'T CHANGE ANYTHING BELOW THIS!
 
@@ -65,22 +76,22 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-//Prompts
-//Length (8-128 char) - numeric input required w/ validation
-//Lowercase - yes/no
-//Uppercase - yes/no
-//Numeric - yes/no
-//Special Characters yes/no
+//Prompts ✅
+//Length (8-128 char) - numeric input required w/ validation ✅
+//Lowercase - yes/no ✅
+//Uppercase - yes/no ✅
+//Numeric - yes/no ✅
+//Special Characters yes/no ✅
 
-// Each input needs to be validated
-// At least one character type must be selected
+// Each input needs to be validated ✅
+// At least one character type must be selected ✅
 
 //Password generated using criteria
 //-----------
-//create variables for each prompt
-//e.g a-z, A-Z, 0-9, [specials -  !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]
-//add each string to a master variable that contains all available characters for password
-//if loop that randomly selects from available characters to length stated by user
+//create variables for each prompt ✅
+//e.g a-z, A-Z, 0-9, [specials -  !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~] ✅
+//add each string to a master variable that contains all available characters for password ✅
+//for loop that randomly selects from available characters to length stated by user 
 //select a random character each time from the available string using - chatAt(random number from string)
 
-//**If time, create function for character confirmations to reduce code**
+//**If time, create function for character confirmations to reduce code** ✅
